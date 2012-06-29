@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Minequest-BJSONAPI by Minequest</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Minequest-BJSONAPI</h1>
+        <p class="header">Provides additional functionality related to MineQuest with alecgorge's JSONAPI for Bukkit.</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/Minequest/Minequest-BJSONAPI/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/Minequest/Minequest-BJSONAPI/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/Minequest/Minequest-BJSONAPI">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/Minequest">Minequest</a></p>
+
+
+      </header>
+      <section>
+        <h1>BJSONAPI</h1>
+
+<p>This simply documents the methods we have. In the future, maybe, we might have an auto-generating script...</p>
+
+<p>All methods return NULL if the method failed to execute (e.g. Illegal Arguments, etc)</p>
+
+<h2>MineQuest JSON API:</h2>
+
+<h3>GETALLDETAILS</h3>
+
+<ul>
+<li>
+<strong>Syntax:</strong> minequest.getalldetails()</li>
+<li>
+<strong>Returns:</strong> String[] of the loaded details</li>
+</ul><h3>GETDETAIL</h3>
+
+<ul>
+<li>
+<strong>Syntax:</strong> minequest.getdetail(String name)</li>
+<li>
+<strong>Param:</strong> name - refers to the detail name</li>
+<li>
+<strong>Returns:</strong> QuestDetail object</li>
+</ul><h3>GETSTATISTIC</h3>
+
+<ul>
+<li>
+<strong>Syntax:</strong> minequest.getstatistic(String playerName, String tableClassName)</li>
+<li>
+<strong>Param:</strong> playerName - get the statistic for the player</li>
+<li>
+<strong>Param:</strong> tableClassName - the full class name for the statistic, e.g. com.theminequest.MineQuest.API.Tracker.QuestStatistic</li>
+<li>
+<strong>Returns:</strong> the Statistic that was requested for the player</li>
+</ul><h3>GETQUESTS</h3>
+
+<ul>
+<li>
+<strong>Syntax:</strong> minequest.getquests(String playerName, int status)</li>
+<li>
+<strong>Param:</strong> playerName - get player quests</li>
+<li>
+<strong>Param:</strong> status - what type quests (0: GIVEN, 1: COMPLETED, 2: INPROGRESS)</li>
+<li>
+<strong>Returns:</strong> String[] list of quests the player has</li>
+</ul><h3>GETCOMPLETEDDETAILS</h3>
+
+<ul>
+<li>
+<strong>Syntax:</strong> minequest.getcompleteddetails(String playerName)</li>
+<li>
+<strong>Param:</strong> playerName - get player's completed quests</li>
+<li>
+<strong>Returns:</strong> Map of the completed quests, with its respective completion date.</li>
+</ul><h3>HASQUEST</h3>
+
+<ul>
+<li>
+<strong>Syntax:</strong> minequest.hasquest(String playerName, String questName)</li>
+<li>
+<strong>Param:</strong> playerName - check if said player has quest</li>
+<li>
+<strong>Param:</strong> questName - quest to check for</li>
+<li>
+<strong>Returns:</strong> int that represents status (0: GIVEN, 1: COMPLETED, 2: INPROGRESS, 3: UNKNOWN)</li>
+</ul><h3>GIVEQUEST</h3>
+
+<ul>
+<li>
+<strong>Syntax:</strong> minequest.givequest(String playerName, String questName)</li>
+<li>
+<strong>Param:</strong> playerName - player to give quest to</li>
+<li>
+<strong>Param:</strong> questName - quest to give</li>
+<li>
+<strong>Returns:</strong> "GOOD" if passed; "FAIL:[exception message]" if failed.</li>
+</ul><h3>DROPQUEST</h3>
+
+<ul>
+<li>
+<strong>Syntax:</strong> minequest.dropquest(String playerName, String questName)</li>
+<li>
+<strong>Param:</strong> playerName - player to drop quest from</li>
+<li>
+<strong>Param:</strong> questName - quest to drop</li>
+<li>
+<strong>Returns:</strong> "GOOD" if passed; "FAIL:[exception message]" if failed.</li>
+</ul><h3>COMPLETEQUEST</h3>
+
+<ul>
+<li>
+<strong>Syntax:</strong> minequest.completequest(String playerName, String questName)</li>
+<li>
+<strong>Param:</strong> playerName - player to complete quest for</li>
+<li>
+<strong>Param:</strong> questName - quest to complete</li>
+<li>
+<strong>Returns:</strong> "GOOD" if passed; "FAIL:[exception message]" if failed.</li>
+</ul>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+		
+  </body>
+</html>
