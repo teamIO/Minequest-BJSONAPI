@@ -1,0 +1,8 @@
+.settings/*.prefs
+.classpath
+.project
+.euml2
+.umlproject
+*.ucd
+target
+bin

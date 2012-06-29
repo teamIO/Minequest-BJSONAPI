@@ -1,0 +1,128 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.theminequest</groupId>
+	<artifactId>MineQuest-BJSONAPI</artifactId>
+	<version>dev-SNAPSHOT</version>
+
+	<name>MineQuest-API, version 2</name>
+	<description>The MineQuest API formes the core of the whole system and allows other plugins to access its functionality.</description>
+	<url>http://www.theminequest.com/</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<developers>
+		<developer>
+			<id>robxu9</id>
+			<name>Robert Xu</name>
+			<email>robxu9@gmail.com</email>
+		</developer>
+	</developers>
+
+	<build>
+		<finalName>MineQuest</finalName>
+		<defaultGoal>clean package javadoc:javadoc javadoc:jar install</defaultGoal>
+		<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+		<resources>
+			<resource>
+				<targetPath>.</targetPath>
+				<filtering>false</filtering>
+				<directory>${basedir}</directory>
+				<includes>
+					<include>LICENSE.txt</include>
+				</includes>
+			</resource>
+			<resource>
+				<targetPath>.</targetPath>
+				<directory>${basedir}/src/main/resources/</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>plugin.yml</include>
+				</includes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<name>MineQuest</name>
+					<linksource>true</linksource>
+					<detectlinks>true</detectlinks>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.theminequest</groupId>
+			<artifactId>MineQuest-API</artifactId>
+			<version>LATEST</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.ramblingwood.minecraft.jsonapi</groupId>
+			<artifactId>JSONAPI</artifactId>
+			<version>bleeding</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/JSONAPI.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+			<type>jar</type>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<distributionManagement>
+		<!-- Publish versioned releases here -->
+		<repository>
+			<id>nexus</id>
+			<name>Nexus.Lincom</name>
+			<url>http://build.lincomlinux.org/nexus/content/repositories/releases</url>
+		</repository>
+
+		<!-- Publish snapshots here -->
+		<snapshotRepository>
+			<id>nexus</id>
+			<name>Nexus.Lincom</name>
+			<url>http://build.lincomlinux.org/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<repositories>
+		<repository>
+			<id>bukkit-repo</id>
+			<url>http://repo.bukkit.org/content/groups/public/</url>
+		</repository>
+		<repository>
+			<id>spout-repo</id>
+			<url>http://repo.spout.org/</url>
+		</repository>
+		<repository>
+			<id>lincom-repo</id>
+			<url>http://build.lincomlinux.org/nexus/content/groups/public/</url>
+		</repository>
+		<repository>
+			<id>alta189-repo</id>
+			<url>http://repo.alta189.com/</url>
+		</repository>
+	</repositories>
+
+</project>

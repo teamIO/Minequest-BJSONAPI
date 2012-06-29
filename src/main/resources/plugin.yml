@@ -1,0 +1,12 @@
+name: MineQuest-BJSONAPI
+main: com.theminequest.MineQuest.MineQuest
+version: dev-SNAPSHOT
+
+author: Xu_R
+
+description: Bukkit JSONAPI interface for MineQuest
+website: www.theminequest.com
+
+load: POSTWORLD
+
+softdepend: [MineQuest,JSONAPI]
