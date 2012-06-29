@@ -5,8 +5,8 @@
 	<artifactId>MineQuest-BJSONAPI</artifactId>
 	<version>dev-SNAPSHOT</version>
 
-	<name>MineQuest-API, version 2</name>
-	<description>The MineQuest API formes the core of the whole system and allows other plugins to access its functionality.</description>
+	<name>MineQuest-BJSONAPI</name>
+	<description>JSON API built off of alecgorge's Bukkit JSONAPI.</description>
 	<url>http://www.theminequest.com/</url>
 
 	<properties>
@@ -22,7 +22,7 @@
 	</developers>
 
 	<build>
-		<finalName>MineQuest</finalName>
+		<finalName>MineQuest-BJSONAPI</finalName>
 		<defaultGoal>clean package javadoc:javadoc javadoc:jar install</defaultGoal>
 		<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
 		<resources>
