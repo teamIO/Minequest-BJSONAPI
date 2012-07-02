@@ -94,15 +94,15 @@
 		<!-- Publish versioned releases here -->
 		<repository>
 			<id>nexus</id>
-			<name>Nexus.Lincom</name>
-			<url>http://build.lincomlinux.org/nexus/content/repositories/releases</url>
+			<name>nexus.alta189</name>
+			<url>http://nexus.alta189.com/content/repositories/releases</url>
 		</repository>
 
 		<!-- Publish snapshots here -->
 		<snapshotRepository>
 			<id>nexus</id>
-			<name>Nexus.Lincom</name>
-			<url>http://build.lincomlinux.org/nexus/content/repositories/snapshots</url>
+			<name>nexus.alta189</name>
+			<url>http://nexus.alta189.com/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 
@@ -114,10 +114,6 @@
 		<repository>
 			<id>spout-repo</id>
 			<url>http://repo.spout.org/</url>
-		</repository>
-		<repository>
-			<id>lincom-repo</id>
-			<url>http://build.lincomlinux.org/nexus/content/groups/public/</url>
 		</repository>
 		<repository>
 			<id>alta189-repo</id>
