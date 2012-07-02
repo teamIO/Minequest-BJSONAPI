@@ -9,9 +9,9 @@ import com.alecgorge.minecraft.jsonapi.api.JSONAPICallHandler;
 import com.alta189.simplesave.internal.TableRegistration;
 
 import com.theminequest.MineQuest.API.Managers;
+import com.theminequest.MineQuest.API.Tracker.LogStatus;
 import com.theminequest.MineQuest.API.Tracker.QuestStatisticUtils;
 import com.theminequest.MineQuest.API.Tracker.QuestStatisticUtils.QSException;
-import com.theminequest.MineQuest.API.Tracker.QuestStatisticUtils.Status;
 import com.theminequest.MineQuest.API.Tracker.StatisticManager.Statistic;
 
 public class Main extends JavaPlugin implements JSONAPICallHandler {
@@ -102,7 +102,7 @@ public class Main extends JavaPlugin implements JSONAPICallHandler {
 				String tableClassName = (String) args[1];
 				for (TableRegistration r : Managers.getStatisticManager().getStorageBackend().getTableRegistrations()){
 					if (r.getTableClass().getName().equals(tableClassName))
-						return Managers.getStatisticManager().getStatistic(playerName,(Class<? extends Statistic>) r.getTableClass());
+						return Managers.getStatisticManager().getStatistics(playerName,(Class<? extends Statistic>) r.getTableClass());
 				}
 				return null;
 			}
@@ -112,7 +112,7 @@ public class Main extends JavaPlugin implements JSONAPICallHandler {
 		// following from QuestStatisticUtils
 		GETQUESTS("getquests", new ReturnHandler(){
 
-			// 0 - given, 1 - completed, 2 - inprogress, 3 - unknown
+			// 0 - given, 1 - inprogress, 2 - completed, 3 - unknown
 			// this operation does not support 3 - unknown
 			@Override
 			public Object handle(Object[] args) {
@@ -122,29 +122,19 @@ public class Main extends JavaPlugin implements JSONAPICallHandler {
 				int status = (Integer) args[1];
 				switch(status){
 				case 0:
-					return QuestStatisticUtils.getQuests(playerName,Status.GIVEN);
+					return QuestStatisticUtils.getQuests(playerName,LogStatus.GIVEN);
 				case 1:
-					return QuestStatisticUtils.getQuests(playerName,Status.COMPLETED);
+					return QuestStatisticUtils.getQuests(playerName,LogStatus.COMPLETED);
 				case 2:
-					return QuestStatisticUtils.getQuests(playerName,Status.INPROGRESS);
+					return QuestStatisticUtils.getQuests(playerName,LogStatus.ACTIVE);
 				}
 				return null;
 			}
 			
 		}),
-		GETCOMPLETEDDETAILS("getcompleteddetails", new ReturnHandler(){
-
-			@Override
-			public Object handle(Object[] args) {
-				if (args.length!=1)
-					return null;
-				return QuestStatisticUtils.getCompletedDetails((String) args[0]);
-			}
-			
-		}),
 		HASQUEST("hasquest", new ReturnHandler(){
 
-			// 0 - given, 1 - completed, 2 - inprogress, 3 - unknown
+			// 0 - given, 1 - active, 2 - completed, 3 - unknown
 			// returns code above based on status
 			@Override
 			public Object handle(Object[] args) {
@@ -154,11 +144,11 @@ public class Main extends JavaPlugin implements JSONAPICallHandler {
 				String questName = (String) args[1];
 				switch(QuestStatisticUtils.hasQuest(playerName,questName)){
 				case COMPLETED:
-					return 1;
+					return 2;
 				case GIVEN:
 					return 0;
-				case INPROGRESS:
-					return 2;
+				case ACTIVE:
+					return 1;
 				default:
 					return 3;
 				}
@@ -191,7 +181,7 @@ public class Main extends JavaPlugin implements JSONAPICallHandler {
 				String playerName = (String) args[0];
 				String questName = (String) args[1];
 				try {
-					QuestStatisticUtils.degiveQuest(playerName,questName);
+					QuestStatisticUtils.dropQuest(playerName,questName);
 					return "GOOD";
 				} catch (QSException e) {
 					return "FAIL:" + e.getMessage();
