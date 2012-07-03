@@ -12,7 +12,7 @@ import com.theminequest.MineQuest.API.Managers;
 import com.theminequest.MineQuest.API.Tracker.LogStatus;
 import com.theminequest.MineQuest.API.Tracker.QuestStatisticUtils;
 import com.theminequest.MineQuest.API.Tracker.QuestStatisticUtils.QSException;
-import com.theminequest.MineQuest.API.Tracker.StatisticManager.Statistic;
+import com.theminequest.MineQuest.API.Tracker.Statistic;
 
 public class Main extends JavaPlugin implements JSONAPICallHandler {
 	
@@ -102,7 +102,7 @@ public class Main extends JavaPlugin implements JSONAPICallHandler {
 				String tableClassName = (String) args[1];
 				for (TableRegistration r : Managers.getStatisticManager().getStorageBackend().getTableRegistrations()){
 					if (r.getTableClass().getName().equals(tableClassName))
-						return Managers.getStatisticManager().getStatistics(playerName,(Class<? extends Statistic>) r.getTableClass());
+						return Managers.getStatisticManager().getAllStatistics(playerName,(Class<? extends Statistic>) r.getTableClass());
 				}
 				return null;
 			}
